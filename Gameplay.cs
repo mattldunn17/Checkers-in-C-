@@ -26,6 +26,7 @@ namespace Checkers
 
         private void loadLists()
         {
+            // constructing list of blue checks
             blues.Add(blue1);
             blues.Add(blue2);
             blues.Add(blue3);
@@ -39,6 +40,7 @@ namespace Checkers
             blues.Add(blue11);
             blues.Add(blue12);
 
+            // constructing lists of red checks
             reds.Add(red1);
             reds.Add(red2);
             reds.Add(red3);
@@ -53,6 +55,7 @@ namespace Checkers
             reds.Add(red12);
         }
 
+        // saves selection to a variable
         private void selection(object o)
         {
             if (!extraJump)
@@ -61,32 +64,61 @@ namespace Checkers
                 catch { }
                 PictureBox s = (PictureBox)o;
                 selectedBox = s;
-                selectedBox.BackColor = Color.Lime;
+                // selectedBox.BackColor = Color.Lime;                  // coloring the selected check to lime
             }
         }
 
         private void mClick(object sender, MouseEventArgs e)
         {
+            // calls method for movement
             movement((PictureBox)sender);
+
+            // displays turn indicator
+            if (turn % 2 == 0)
+            {
+                turnTextbox.Text = "RED'S TURN.";
+                turnTextbox.ForeColor = Color.Red;
+            }
+            else
+            {
+                turnTextbox.Text = "BLUE'S TURN.";
+                turnTextbox.ForeColor = Color.Blue;
+            }
+
+            // displays the winner if game ended, prompts for a new game
+            if (EndOfGame(reds))
+            {
+                winnerTextbox.Text = "BLUE WINS!!!";
+                startnewgame.Visible = true;
+                turnTextbox.Visible = false;
+            }
+            else if (EndOfGame(blues))
+            {
+                winnerTextbox.Text = "RED WINS!!!";
+                startnewgame.Visible = true;
+                turnTextbox.Visible = false;
+            }
         }
 
+        // standard movement control
         private void movement(PictureBox p)
         {
             if (selectedBox != null)
             {
+                // color of the selected check
                 string color = selectedBox.Name.ToString().Substring(0, 3);
 
-                if (validation(selectedBox, p, color)) //validation
+                if (validation(selectedBox, p, color)) // validation
                 {
                     Point previous = selectedBox.Location;
                     selectedBox.Location = p.Location;
                     int advance = previous.Y - p.Location.Y;
 
-                    if (!extraMovement(color) | Math.Abs(advance) == 100) //check extra movements
+                    if (!extraMovement(color) | Math.Abs(advance) == 100) // check for extra movements, ends turn if false
                     {
                         ifKing(color);
                         turn++;
-                        selectedBox.BackColor = Color.White;
+                        // selectedBox.BackColor = Color.White;             // returning selected check to white
                         selectedBox = null;
                         extraJump = false;
                     }
@@ -98,21 +130,23 @@ namespace Checkers
             }
         }
 
+        // controls extra jump
         private bool extraMovement(string color)
         {
-            List<PictureBox> opposingSide = color == "red" ? blues : reds;
-            List<Point> points = new List<Point>();
+            List<PictureBox> opposingSide = color == "red" ? blues : reds;                  // list of opposing checks
+            List<Point> points = new List<Point>();                                         // list of points around the selected check
             int nextPoint = color == "red" ? -200 : 200;
 
             points.Add(new Point(selectedBox.Location.X + 200, selectedBox.Location.Y + nextPoint));
             points.Add(new Point(selectedBox.Location.X - 200, selectedBox.Location.Y + nextPoint));
-            if (selectedBox.Tag == "king")
+            if (selectedBox.Tag == "king")      // adds points behind the check if king
             {
                 points.Add(new Point(selectedBox.Location.X + 200, selectedBox.Location.Y - nextPoint));
                 points.Add(new Point(selectedBox.Location.X - 200, selectedBox.Location.Y - nextPoint));
             }
 
             bool result = false;
+            // returns true of extra jump is found
             for (int i = 0; i < points.Count; i++)
             {
                 if (points[i].X >= 12 && points[i].X <= 712 && points[i].Y >= 12 && points[i].Y <= 712)
@@ -130,6 +164,7 @@ namespace Checkers
             return result;
         }
 
+        // checks to see if a space is occupied by a check, returns true if so
         private bool occupiedSpace(Point point, List<PictureBox> sides)
         {
             for (int i = 0; i < sides.Count; i++)
@@ -142,6 +177,7 @@ namespace Checkers
             return false;
         }
 
+        // returns average of two ints
         private int average(int n1, int n2)
         {
             int result = n1 + n2;
@@ -151,17 +187,22 @@ namespace Checkers
 
         private bool validation(PictureBox origin, PictureBox destination, string color)
         {
-            Point originPoint = origin.Location;
+            Point originPoint = origin.Location;   
             Point destinationPoint = destination.Location;
-            int advance = originPoint.Y - destinationPoint.Y;
-            advance = color == "red" ? advance : (advance * -1);
-            advance = selectedBox.Tag == "king" ? Math.Abs(advance) : advance;
+            int advanceX = originPoint.X - destinationPoint.X;
+            int advanceY = originPoint.Y - destinationPoint.Y;
+            advanceX = color == "red" ? advanceX : (advanceX * -1);
+            advanceX = selectedBox.Tag == "king" ? Math.Abs(advanceX) : advanceX;
+            advanceY = color == "red" ? advanceY : (advanceY * -1);
+            advanceY = selectedBox.Tag == "king" ? Math.Abs(advanceY) : advanceY;
 
-            if (advance == 100)
+            // regular movement
+            if ((advanceX == 100 && advanceY == 100) || (advanceX == -100 && advanceY == 100))
             {
                 return true;
             }
-            else if (advance == 200)
+            // elimination jump
+            else if ((advanceX == 200 && advanceY == 200) || (advanceX == -200 && advanceY == 200))
             {
                 Point midpoint = new Point(average(destinationPoint.X, originPoint.X), average(destinationPoint.Y, originPoint.Y));
                 List<PictureBox> opposingSide = color == "red" ? blues : reds;
@@ -169,7 +210,8 @@ namespace Checkers
                 {
                     if (opposingSide[i].Location == midpoint)
                     {
-                        opposingSide[i].Location = new Point(0, 0);
+                        // sets eliminated check off of board, turns invisible and locks in place
+                        opposingSide[i].Location = new Point(1000, 712);
                         opposingSide[i].Visible = false;
                         return true;
                     }
@@ -178,48 +220,123 @@ namespace Checkers
             return false;
         }
 
+        // resets check image to a king check image when triggered
         private void ifKing(string color)
         {
             if (color == "blu" && selectedBox.Location.Y == 712)
             {
-                selectedBox.BackgroundImage = Properties.Resources.blueKing;
+                selectedBox.BackgroundImage = Properties.Resources.blueKing1;
                 selectedBox.Tag = "king";
             }
 
             else if (color == "red" && selectedBox.Location.Y == 12)
             {
-                selectedBox.BackgroundImage = Properties.Resources.redKing;
+                selectedBox.BackgroundImage = Properties.Resources.redKing1;
                 selectedBox.Tag = "king";
             }
         }
 
+        // selects a red check and awaits selection
         private void redSelect(object sender, MouseEventArgs e)
         {
             if (turn % 2 == 0)
             {
                 selection(sender);
             }
-            else
-            {
-                MessageBox.Show("BLUE'S TURN!!");
-            }
         }
 
+        // selects a blue check and awaits selection
         private void blueSelect(object sender, MouseEventArgs e)
         {
             if (turn % 2 == 1)
             {
                 selection(sender);
             }
-            else
+        }
+
+        // returns true if a player has all checks out of play
+        private bool EndOfGame(List<PictureBox> checks)
+        {
+            for (int i = 0; i < checks.Count; i++)
             {
-                MessageBox.Show("RED'S TURN!!");
+                if (checks[i].Visible)
+                {
+                    return false;
+                }
             }
+            return true;
+        }
+
+        private void newGame_Click(object sender, EventArgs e)
+        {
+            // resets variables
+            int turn = 0;
+            bool extraJump = false;
+            PictureBox selectedBox = null;
+
+            // hides and shows appropriate textboxes
+            turnTextbox.Visible = true;
+            startnewgame.Visible = false;
+
+            // resets blue checks to start position
+            blues[0].Location = new Point(12, 12);
+            blues[1].Location = new Point(212, 12);
+            blues[2].Location = new Point(412, 12);
+            blues[3].Location = new Point(612, 12);
+            blues[4].Location = new Point(112, 112);
+            blues[5].Location = new Point(312, 112);
+            blues[6].Location = new Point(512, 112);
+            blues[7].Location = new Point(712, 112);
+            blues[8].Location = new Point(12, 212);
+            blues[9].Location = new Point(212, 212);
+            blues[10].Location = new Point(412, 212);
+            blues[11].Location = new Point(612, 212);
+
+            // resets red checks to start position
+            reds[0].Location = new Point(112, 512);
+            reds[1].Location = new Point(312, 512);
+            reds[2].Location = new Point(512, 512);
+            reds[3].Location = new Point(712, 512);
+            reds[4].Location = new Point(12, 612);
+            reds[5].Location = new Point(212, 612);
+            reds[6].Location = new Point(412, 612);
+            reds[7].Location = new Point(612, 612);
+            reds[8].Location = new Point(112, 712);
+            reds[9].Location = new Point(312, 712);
+            reds[10].Location = new Point(512, 712);
+            reds[11].Location = new Point(712, 712);
+
+            // makes every check visible and nullifies all king checks
+            for (int i = 0; i < blues.Count; i++)
+            {
+                // blue check at index i
+                blues[i].Visible = true;
+                blues[i].Tag = "";
+                blues[i].BackgroundImage = Properties.Resources.blue;
+
+                // red check at index i
+                reds[i].Visible = true;
+                reds[i].Tag = "";
+                reds[i].BackgroundImage = Properties.Resources.red;
+            }
+        }
+
+        private void showRules_Click(object sender, EventArgs e)
+        {
+            // makes new instance of RuleList and opens up window.
+            RuleList r = new RuleList("Open");
+        }
+
+        // ends game and closes form
+        private void endgame_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 
         // --------------------------------------------------------------------------------------------------------------------
         // unused functions
+        // --------------------------------------------------------------------------------------------------------------------
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -338,6 +455,6 @@ namespace Checkers
         private void red7_Click(object sender, EventArgs e)
         {
 
-        }
+        }   
     }
 }

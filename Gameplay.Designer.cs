@@ -117,6 +117,12 @@
             this.blue3 = new System.Windows.Forms.PictureBox();
             this.blue2 = new System.Windows.Forms.PictureBox();
             this.blue1 = new System.Windows.Forms.PictureBox();
+            this.newGame = new System.Windows.Forms.Button();
+            this.showRules = new System.Windows.Forms.Button();
+            this.turnTextbox = new System.Windows.Forms.TextBox();
+            this.winnerTextbox = new System.Windows.Forms.TextBox();
+            this.startnewgame = new System.Windows.Forms.TextBox();
+            this.endgame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -848,6 +854,7 @@
             this.red12.Size = new System.Drawing.Size(100, 100);
             this.red12.TabIndex = 75;
             this.red12.TabStop = false;
+            this.red12.Visible = false;
             this.red12.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red11
@@ -860,6 +867,7 @@
             this.red11.Size = new System.Drawing.Size(100, 100);
             this.red11.TabIndex = 74;
             this.red11.TabStop = false;
+            this.red11.Visible = false;
             this.red11.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red10
@@ -872,6 +880,7 @@
             this.red10.Size = new System.Drawing.Size(100, 100);
             this.red10.TabIndex = 73;
             this.red10.TabStop = false;
+            this.red10.Visible = false;
             this.red10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red9
@@ -884,6 +893,7 @@
             this.red9.Size = new System.Drawing.Size(100, 100);
             this.red9.TabIndex = 72;
             this.red9.TabStop = false;
+            this.red9.Visible = false;
             this.red9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red8
@@ -896,6 +906,7 @@
             this.red8.Size = new System.Drawing.Size(100, 100);
             this.red8.TabIndex = 71;
             this.red8.TabStop = false;
+            this.red8.Visible = false;
             this.red8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red7
@@ -908,6 +919,7 @@
             this.red7.Size = new System.Drawing.Size(100, 100);
             this.red7.TabIndex = 70;
             this.red7.TabStop = false;
+            this.red7.Visible = false;
             this.red7.Click += new System.EventHandler(this.red7_Click);
             this.red7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
@@ -921,6 +933,7 @@
             this.red6.Size = new System.Drawing.Size(100, 100);
             this.red6.TabIndex = 69;
             this.red6.TabStop = false;
+            this.red6.Visible = false;
             this.red6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red5
@@ -933,6 +946,7 @@
             this.red5.Size = new System.Drawing.Size(100, 100);
             this.red5.TabIndex = 68;
             this.red5.TabStop = false;
+            this.red5.Visible = false;
             this.red5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red4
@@ -945,6 +959,7 @@
             this.red4.Size = new System.Drawing.Size(100, 100);
             this.red4.TabIndex = 67;
             this.red4.TabStop = false;
+            this.red4.Visible = false;
             this.red4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red3
@@ -957,6 +972,7 @@
             this.red3.Size = new System.Drawing.Size(100, 100);
             this.red3.TabIndex = 66;
             this.red3.TabStop = false;
+            this.red3.Visible = false;
             this.red3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red2
@@ -969,6 +985,7 @@
             this.red2.Size = new System.Drawing.Size(100, 100);
             this.red2.TabIndex = 65;
             this.red2.TabStop = false;
+            this.red2.Visible = false;
             this.red2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // red1
@@ -981,6 +998,7 @@
             this.red1.Size = new System.Drawing.Size(100, 100);
             this.red1.TabIndex = 64;
             this.red1.TabStop = false;
+            this.red1.Visible = false;
             this.red1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.redSelect);
             // 
             // blue12
@@ -993,6 +1011,7 @@
             this.blue12.Size = new System.Drawing.Size(100, 100);
             this.blue12.TabIndex = 87;
             this.blue12.TabStop = false;
+            this.blue12.Visible = false;
             this.blue12.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue11
@@ -1005,6 +1024,7 @@
             this.blue11.Size = new System.Drawing.Size(100, 100);
             this.blue11.TabIndex = 86;
             this.blue11.TabStop = false;
+            this.blue11.Visible = false;
             this.blue11.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue10
@@ -1017,6 +1037,7 @@
             this.blue10.Size = new System.Drawing.Size(100, 100);
             this.blue10.TabIndex = 85;
             this.blue10.TabStop = false;
+            this.blue10.Visible = false;
             this.blue10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue9
@@ -1029,6 +1050,7 @@
             this.blue9.Size = new System.Drawing.Size(100, 100);
             this.blue9.TabIndex = 84;
             this.blue9.TabStop = false;
+            this.blue9.Visible = false;
             this.blue9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue8
@@ -1041,6 +1063,7 @@
             this.blue8.Size = new System.Drawing.Size(100, 100);
             this.blue8.TabIndex = 83;
             this.blue8.TabStop = false;
+            this.blue8.Visible = false;
             this.blue8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue7
@@ -1053,6 +1076,7 @@
             this.blue7.Size = new System.Drawing.Size(100, 100);
             this.blue7.TabIndex = 82;
             this.blue7.TabStop = false;
+            this.blue7.Visible = false;
             this.blue7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue6
@@ -1065,6 +1089,7 @@
             this.blue6.Size = new System.Drawing.Size(100, 100);
             this.blue6.TabIndex = 81;
             this.blue6.TabStop = false;
+            this.blue6.Visible = false;
             this.blue6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue5
@@ -1077,6 +1102,7 @@
             this.blue5.Size = new System.Drawing.Size(100, 100);
             this.blue5.TabIndex = 80;
             this.blue5.TabStop = false;
+            this.blue5.Visible = false;
             this.blue5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue4
@@ -1089,6 +1115,7 @@
             this.blue4.Size = new System.Drawing.Size(100, 100);
             this.blue4.TabIndex = 79;
             this.blue4.TabStop = false;
+            this.blue4.Visible = false;
             this.blue4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue3
@@ -1101,6 +1128,7 @@
             this.blue3.Size = new System.Drawing.Size(100, 100);
             this.blue3.TabIndex = 78;
             this.blue3.TabStop = false;
+            this.blue3.Visible = false;
             this.blue3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue2
@@ -1113,6 +1141,7 @@
             this.blue2.Size = new System.Drawing.Size(100, 100);
             this.blue2.TabIndex = 77;
             this.blue2.TabStop = false;
+            this.blue2.Visible = false;
             this.blue2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
             // 
             // blue1
@@ -1125,14 +1154,99 @@
             this.blue1.Size = new System.Drawing.Size(100, 100);
             this.blue1.TabIndex = 76;
             this.blue1.TabStop = false;
+            this.blue1.Visible = false;
             this.blue1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueSelect);
+            // 
+            // newGame
+            // 
+            this.newGame.BackColor = System.Drawing.Color.Silver;
+            this.newGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newGame.Location = new System.Drawing.Point(970, 12);
+            this.newGame.Name = "newGame";
+            this.newGame.Size = new System.Drawing.Size(125, 100);
+            this.newGame.TabIndex = 88;
+            this.newGame.Text = "New Game";
+            this.newGame.UseVisualStyleBackColor = false;
+            this.newGame.Click += new System.EventHandler(this.newGame_Click);
+            // 
+            // showRules
+            // 
+            this.showRules.BackColor = System.Drawing.Color.Silver;
+            this.showRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showRules.Location = new System.Drawing.Point(839, 12);
+            this.showRules.Name = "showRules";
+            this.showRules.Size = new System.Drawing.Size(125, 100);
+            this.showRules.TabIndex = 89;
+            this.showRules.Text = "Rules";
+            this.showRules.UseVisualStyleBackColor = false;
+            this.showRules.Click += new System.EventHandler(this.showRules_Click);
+            // 
+            // turnTextbox
+            // 
+            this.turnTextbox.BackColor = System.Drawing.Color.DarkKhaki;
+            this.turnTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.turnTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.turnTextbox.ForeColor = System.Drawing.Color.Red;
+            this.turnTextbox.Location = new System.Drawing.Point(839, 146);
+            this.turnTextbox.Name = "turnTextbox";
+            this.turnTextbox.ReadOnly = true;
+            this.turnTextbox.Size = new System.Drawing.Size(256, 38);
+            this.turnTextbox.TabIndex = 90;
+            this.turnTextbox.Text = "RED\'S TURN";
+            this.turnTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.turnTextbox.Visible = false;
+            // 
+            // winnerTextbox
+            // 
+            this.winnerTextbox.BackColor = System.Drawing.Color.DarkKhaki;
+            this.winnerTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.winnerTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winnerTextbox.ForeColor = System.Drawing.Color.Gold;
+            this.winnerTextbox.Location = new System.Drawing.Point(839, 190);
+            this.winnerTextbox.Name = "winnerTextbox";
+            this.winnerTextbox.ReadOnly = true;
+            this.winnerTextbox.Size = new System.Drawing.Size(256, 38);
+            this.winnerTextbox.TabIndex = 91;
+            this.winnerTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // startnewgame
+            // 
+            this.startnewgame.BackColor = System.Drawing.Color.DarkKhaki;
+            this.startnewgame.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.startnewgame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startnewgame.ForeColor = System.Drawing.Color.Black;
+            this.startnewgame.Location = new System.Drawing.Point(839, 234);
+            this.startnewgame.Name = "startnewgame";
+            this.startnewgame.ReadOnly = true;
+            this.startnewgame.Size = new System.Drawing.Size(256, 29);
+            this.startnewgame.TabIndex = 92;
+            this.startnewgame.Text = "START A NEW GAME";
+            this.startnewgame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // endgame
+            // 
+            this.endgame.BackColor = System.Drawing.Color.Silver;
+            this.endgame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endgame.Location = new System.Drawing.Point(893, 312);
+            this.endgame.Name = "endgame";
+            this.endgame.Size = new System.Drawing.Size(147, 42);
+            this.endgame.TabIndex = 94;
+            this.endgame.Text = "End Game";
+            this.endgame.UseVisualStyleBackColor = false;
+            this.endgame.Click += new System.EventHandler(this.endgame_Click);
             // 
             // Gameplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.ClientSize = new System.Drawing.Size(938, 823);
+            this.BackColor = System.Drawing.Color.DarkKhaki;
+            this.ClientSize = new System.Drawing.Size(1117, 823);
+            this.Controls.Add(this.endgame);
+            this.Controls.Add(this.startnewgame);
+            this.Controls.Add(this.winnerTextbox);
+            this.Controls.Add(this.turnTextbox);
+            this.Controls.Add(this.showRules);
+            this.Controls.Add(this.newGame);
             this.Controls.Add(this.blue12);
             this.Controls.Add(this.blue11);
             this.Controls.Add(this.blue10);
@@ -1312,6 +1426,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.blue2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blue1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1405,5 +1520,11 @@
         private System.Windows.Forms.PictureBox blue3;
         private System.Windows.Forms.PictureBox blue2;
         private System.Windows.Forms.PictureBox blue1;
+        private System.Windows.Forms.Button newGame;
+        private System.Windows.Forms.Button showRules;
+        private System.Windows.Forms.TextBox turnTextbox;
+        private System.Windows.Forms.TextBox winnerTextbox;
+        private System.Windows.Forms.TextBox startnewgame;
+        private System.Windows.Forms.Button endgame;
     }
 }
